@@ -25,14 +25,6 @@ let package = Package(
             targets: ["TunnelKitOpenVPNAppExtension"]
         ),
         .library(
-            name: "TunnelKitWireGuard",
-            targets: ["TunnelKitWireGuard"]
-        ),
-        .library(
-            name: "TunnelKitWireGuardAppExtension",
-            targets: ["TunnelKitWireGuardAppExtension"]
-        ),
-        .library(
             name: "TunnelKitLZO",
             targets: ["TunnelKitLZO"]
         )
@@ -42,11 +34,6 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/SwiftyBeaver/SwiftyBeaver", from: "1.9.0"),
         .package(url: "https://github.com/0xBF90E913/openssl-apple", revision: "ba67936700c9a8d3621aaac28d9fca463183fd8a"),
-//        .package(url: "https://git.zx2c4.com/wireguard-apple", .exact: Version("1.0.15-26")),
-//        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", exact: Version("1.0.17")),
-        .package(url: "https://github.com/kefaxoo/wireguard-apple", revision: "1e7a8a6819d60f5eb525d583f3c977b877801df7")
-//        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", branch: "develop")
-//        .package(name: "WireGuardKit", path: "../wireguard-apple")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -108,33 +95,6 @@ let package = Package(
                 "TunnelKitOpenVPNCore",
                 "TunnelKitOpenVPNManager",
                 "TunnelKitOpenVPNProtocol"
-            ]),
-        //
-        .target(
-            name: "TunnelKitWireGuard",
-            dependencies: [
-                "TunnelKitWireGuardCore",
-                "TunnelKitWireGuardManager"
-            ]),
-        .target(
-            name: "TunnelKitWireGuardCore",
-            dependencies: [
-                "__TunnelKitUtils",
-                "TunnelKitCore",
-                .product(name: "WireGuardKit", package: "wireguard-apple"),
-                "SwiftyBeaver"
-            ]),
-        .target(
-            name: "TunnelKitWireGuardManager",
-            dependencies: [
-                "TunnelKitManager",
-                "TunnelKitWireGuardCore"
-            ]),
-        .target(
-            name: "TunnelKitWireGuardAppExtension",
-            dependencies: [
-                "TunnelKitWireGuardCore",
-                "TunnelKitWireGuardManager"
             ]),
         .target(
             name: "TunnelKitLZO",
